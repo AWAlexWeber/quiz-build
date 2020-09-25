@@ -1,0 +1,20 @@
+.quizSquare {
+    background-color: gray !important;
+    border-radius: 15px;
+    font-weight: bold;
+    padding-top: 5px;
+    position: absolute;
+}
+
+.quizSquare * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.quizSquareTitle {
+    text-align: center;
+    color: white !important;
+}
