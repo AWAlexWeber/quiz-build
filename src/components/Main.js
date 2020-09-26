@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Button from '@material-ui/core/Button';
-import Square from './Square';
+import QuestionSquare from './QuestionSquare';
 
 import '../css/Main.css';
 
@@ -20,7 +20,7 @@ export default class Main extends React.Component {
 
     addSquare() {
         let currentSquares = this.state.squares;
-        currentSquares.push(<Square key = {this.state.squares.length} mainPage = {this.mainContainer}/>);
+        currentSquares.push(<QuestionSquare key = {this.state.squares.length} mainPage = {this.mainContainer}/>);
         this.setState({squares: currentSquares});
     }
 
@@ -28,26 +28,42 @@ export default class Main extends React.Component {
         console.log(this.state.squares);
         return (
             <div className = "mainContainer">
-                <MainBottomBar addSquare = {this.addSquare}/>
+                <TopBar addSquare = {this.addSquare}/>
 
                 <div ref = {element => this.mainContainer = element} className = "mainSquareContainer">
                     {this.state.squares.map(sq => sq)}
                 </div>
+
+                <BottomBar />
             </div>
         )
     }
 }
 
-class MainBottomBar extends React.Component {
+class TopBar extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return (
-            <div className = "mainBottomBar">
-                <Button onClick = {() => {this.props.addSquare()}}className = "bottomBarButton" variant="contained">Add Square</Button>
+            <div className = "topBar">
+                <Button onClick = {() => {this.props.addSquare()}}className = "topBarButton" variant="contained">Add Square</Button>
             </div>
         )
+    }
+}
+
+class BottomBar extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className = "bottomBar">
+                Quiz-Build V0.1.1
+            </div>
+        );
     }
 }
