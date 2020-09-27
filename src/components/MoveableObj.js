@@ -14,7 +14,7 @@ export default class MoveableObj extends React.Component {
             top: 150,
             left: 0,
             width: 250,
-            height: 180
+            height: 300
         };
 
         this.move = this.move.bind(this);

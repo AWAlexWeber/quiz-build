@@ -19,7 +19,14 @@ export default class QuestionSquare extends React.Component {
             editMode: false,
 
             promptTitle: "Title",
-            prompt: "This is where the prompt for the question will go"
+            prompt: "This is where the prompt for the question will go",
+
+            quizChoices: [
+                <div className = "quizChoice">a) Red</div>,
+                <div className = "quizChoice">b) Blue</div>,
+                <div className = "quizChoice">c) Pink</div>,
+                <div className = "quizChoice">d) Black</div>
+            ]
         }; 
     }
 
@@ -41,8 +48,14 @@ export default class QuestionSquare extends React.Component {
         let titleText = <div className ="quizSquareTitleText">{this.state.title}</div>
         let titleIcon = <FontAwesomeIcon icon={faPen} onClick = {() => {this.setState({editMode: true})}}/>;
 
-        let promptTitle = <div className ="quizSquarePromptTitle">{this.state.promptTitle}</div>
-        let promptText = <div className ="quizSquarePromptData">{this.state.prompt}</div>
+        let promptTitle = <div className ="quizSquarePromptTitle">
+            <div className = "quizSquarePromptTitleHeader">Title:</div>
+            <div className = "quizSquarePromptTitleInner">{this.state.promptTitle}</div>
+        </div>
+        let promptText = <div className ="quizSquarePromptData">
+            <div className = "quizSquarePromptTitleHeader">Prompt:</div>
+            <div className = "quizSquarePromptTitleInner">{this.state.prompt}</div>
+        </div>
 
         if (this.state.editMode) {
             titleText = <div className ="quizSquareTitleText"><TextField onChange = {(e) => this.onChangeTitle(e)} value = {this.state.title} className = "quizSquareTitleTextField"/></div>;
@@ -66,6 +79,13 @@ export default class QuestionSquare extends React.Component {
                         <div className = "quizSquarePrompt">
                             {promptTitle}
                             {promptText}
+                        </div>
+
+                        <div className = "quizSquareChoiceContainer">
+                            <div className = "quizSquareChoiceTitle">Options</div>
+                            <div className = "quizSquareChoice">
+                                {this.state.quizChoices}
+                            </div>
                         </div>
                     </div>
                 }
