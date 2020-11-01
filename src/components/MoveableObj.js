@@ -21,7 +21,7 @@ export default class MoveableObj extends React.Component {
     }
     
     move(e) {
-        if (!this.props.canMove) {
+        if (!this.props.canMove || this.props.locked) {
             return;
         }
 

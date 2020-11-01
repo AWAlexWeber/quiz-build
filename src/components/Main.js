@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import LeaderLine from 'leader-line';
 
 import Button from '@material-ui/core/Button';
 import QuestionSquare from './QuestionSquare';
@@ -12,7 +13,8 @@ export default class Main extends React.Component {
         super(props);
 
         this.state = {
-            squares: []
+            squares: [],
+            lines: []
         }
 
         this.addSquare = this.addSquare.bind(this);
@@ -25,13 +27,14 @@ export default class Main extends React.Component {
     }
 
     render() {
-        console.log(this.state.squares);
+
         return (
             <div className = "mainContainer">
                 <TopBar addSquare = {this.addSquare}/>
 
                 <div ref = {element => this.mainContainer = element} className = "mainSquareContainer">
                     {this.state.squares.map(sq => sq)}
+                    {this.state.lines.map(line => line)}
                 </div>
 
                 <BottomBar />

@@ -19,9 +19,9 @@
 
 .quizSquareTitleText {
     text-align: left;
-    width: 88%;
+    width: 80%;
     padding-left: 5px;
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 800 !important;
 }
 
@@ -37,7 +37,7 @@
     border: 0px !important;
 }
 
-.quizSquareTitle .fa-pen {
+.quizSquareTitle .fa-pen, .fa-lock, .fa-unlock {
     font-size: 16px !important;
     margin-right: 9px;
     margin-top: 8px;
