@@ -6,6 +6,15 @@
 
 
 /* * * * Title * * * */
+.quizSquareIconHeader {
+    width: 100%;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-grow: inherit;
+}
+
 .quizSquareTitle {
     text-align: center;
     color: white !important;
@@ -37,15 +46,16 @@
     border: 0px !important;
 }
 
+.fa-pen, .fa-lock, .fa-unlock, .fa-trash, .fa-save {
+    width: 100% !important;
+}
+
 .quizSquareTitle .fa-pen, .fa-lock, .fa-unlock {
     font-size: 16px !important;
-    margin-right: 9px;
-    margin-top: 8px;
 }
 
 .quizSquareTitle .fa-save {
     font-size: 26px !important;
-    margin-right: 9px;
 }
 
 /* * * * Prompt * * * */

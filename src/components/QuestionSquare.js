@@ -1,14 +1,19 @@
+/* Primary imports */
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+/* Using the MoveableObj as the primary tool here */
 import MoveableObj from './MoveableObj';
 
+/* Importing primary font-awesome icons */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen, faSave, faLock, faUnlock } from '@fortawesome/free-solid-svg-icons'
+import { faPen, faSave, faLock, faUnlock, faTrash } from '@fortawesome/free-solid-svg-icons'
 
+/* Adding material-ui to make things nice and pretty, as well as our own css */
 import TextField from '@material-ui/core/TextField';
-
 import '../css/Square.css';
 
+/* QuestionSquare is a direct extension of MoveableObj, with the added functionality of question data */
 export default class QuestionSquare extends React.Component {
 
     constructor(props) {
@@ -31,6 +36,7 @@ export default class QuestionSquare extends React.Component {
         }; 
     }
 
+    /* Interactions with primary question data */
     onChangeTitle(e) {
         this.setState({title: e.target.value});
     }
@@ -42,13 +48,15 @@ export default class QuestionSquare extends React.Component {
     onChangePrompt(e) {
         this.setState({prompt: e.target.value});
     }
+    /* End primary question data segment */
 
     render() {
 
-        // Checking for edit mode
+        // Loading all of the icons.
         let titleText = <div className ="quizSquareTitleText">{this.state.title}</div>
         let titleIcon = <FontAwesomeIcon icon={faPen} onClick = {() => {this.setState({editMode: true})}}/>;
         let lockIcon = <FontAwesomeIcon icon={faUnlock} onClick = {() => {this.setState({locked: !this.state.locked})}}/>;
+        let deleteIcon = <FontAwesomeIcon icon={faTrash} onClick = {() => {this.setState({locked: !this.state.locked})}}/>;
 
         let promptTitle = <div className ="quizSquarePromptTitle">
             <div className = "quizSquarePromptTitleHeader">Title:</div>
@@ -59,6 +67,7 @@ export default class QuestionSquare extends React.Component {
             <div className = "quizSquarePromptTitleInner">{this.state.prompt}</div>
         </div>
 
+        // Changing some of the icons based on what mode we're in.
         if (this.state.editMode) {
             titleText = <div className ="quizSquareTitleText"><TextField onChange = {(e) => this.onChangeTitle(e)} value = {this.state.title} className = "quizSquareTitleTextField"/></div>;
             titleIcon = <FontAwesomeIcon icon={faSave} onClick = {() => {this.setState({editMode: false})}}/>;
@@ -76,12 +85,16 @@ export default class QuestionSquare extends React.Component {
                 mainPage = {this.props.mainPage}
                 canMove = {!this.state.editMode}
                 locked = {this.state.locked}
-                render = {
+                content = {
                     <div className = "quizSquareContainer">
-                        <div className = "quizSquareTitle">
-                            {titleText}
+                        <div className = "quizSquareIconHeader">
                             {titleIcon}
                             {lockIcon}
+                            {deleteIcon}
+                        </div>
+
+                        <div className = "quizSquareTitle">
+                            {titleText}
                         </div>
 
                         <div className = "quizSquarePrompt">

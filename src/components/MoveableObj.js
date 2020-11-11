@@ -64,7 +64,7 @@ export default class MoveableObj extends React.Component {
 
         return ( 
             <Paper elevation = {20} className = {"moveableObj" + " " + canHighlight} onMouseUp = {(e) => {this.mouseUp(e)}} onMouseDown = {(e) => {this.mouseDown(e)}}style = {{width: this.state.width, height: this.state.height, top: this.state.top, left: this.state.left}}>
-                {this.props.render}
+                {this.props.content}
             </Paper>
         )
     }
