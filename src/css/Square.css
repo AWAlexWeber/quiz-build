@@ -7,7 +7,7 @@
 
 /* * * * Title * * * */
 .quizSquareIconHeader {
-    width: 100%;
+    max-width: 100% !important;
     color: white;
     text-align: center;
     display: flex;
@@ -47,7 +47,10 @@
 }
 
 .fa-pen, .fa-lock, .fa-unlock, .fa-trash, .fa-save {
-    width: 100% !important;
+    width: 33% !important;
+    padding-top: 2px;
+    padding-bottom: 10px;
+    margin-bottom: -5px;
 }
 
 .quizSquareTitle .fa-pen, .fa-lock, .fa-unlock {
@@ -108,7 +111,6 @@
     width: 100% !important;
     background-color: white !important;
     padding: 3px !important;
-    height: max-content !important;
 }
 
 /* Choice Container */

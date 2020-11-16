@@ -15,12 +15,30 @@ export default class Main extends React.Component {
         super(props);
 
         this.state = {
-            squares: [],
+            squares: {},
             lines: []
         }
 
         this.addSquare = this.addSquare.bind(this);
         this.deleteSquare = this.deleteSquare.bind(this);
+
+        // Keeping track of the number of squares, indexed.
+        this.squareIndex = 0;
+    }
+
+    /* Function to build a new square. This makes it easier for us to visualize the add square function as our QuestionSquare gets larger
+    Args:
+        index (int): Index of the square, used as the key
+    Returns:
+        QuestionSquare JSX object, to be attached to the view
+    */
+   buildSquare(index) {
+        let newSquare = <QuestionSquare 
+            key = {index} 
+            mainPage = {this.mainContainer}
+            deleteSquare = {this.deleteSquare}
+        />;
+        return newSquare;
     }
 
     /* Function to be called when we want to add a new square to the view.
@@ -31,7 +49,8 @@ export default class Main extends React.Component {
     */
     addSquare() {
         let currentSquares = this.state.squares;
-        currentSquares.push(<QuestionSquare key = {this.state.squares.length} mainPage = {this.mainContainer}/>);
+        currentSquares[this.squareIndex] = this.buildSquare(this.squareIndex); 
+        this.squareIndex += 1;
         this.setState({squares: currentSquares});
     }
 
@@ -49,12 +68,19 @@ export default class Main extends React.Component {
 
     render() {
 
+        // Getting our renderable squares
+        let renderSquares = [];
+        for (var sqKey in this.state.squares) {
+            console.log(sqKey);
+            renderSquares.push(this.state.squares[sqKey]);
+        }
+
         return (
             <div className = "mainContainer">
                 <TopBar addSquare = {this.addSquare} />
 
                 <div ref = {element => this.mainContainer = element} className = "mainSquareContainer">
-                    {this.state.squares.map(sq => sq)}
+                    {renderSquares}
                     {this.state.lines.map(line => line)}
                 </div>
 
