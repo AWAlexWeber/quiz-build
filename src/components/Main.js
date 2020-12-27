@@ -99,7 +99,7 @@ class BottomBar extends React.Component {
     render() {
         return (
             <div className = "bottomBar">
-                Quiz-Build V0.1.1
+                Quiz-Build V1.1.1
             </div>
         );
     }
